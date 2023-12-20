@@ -1,0 +1,78 @@
+/**
+ * @param {character[][]} board
+ * @return {boolean}
+ */
+var isValidSudoku = function(board) {
+    var isValid = true;
+
+    function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    function checkRow(row) {
+        var rowSet = new Set();
+        for (let i = 0; i < 9; i++) {
+            if (isNumber(board[row][i])) {
+                if (rowSet.has(board[row][i])) {
+                    isValid = false;
+                    return;
+                }
+                rowSet.add(board[row][i]);
+            }
+        }
+    }
+
+    function checkColumn(column) {
+        var columnSet = new Set();
+        for (let i = 0; i < 9; i++) {
+            if (isNumber(board[i][column])) {
+                if (columnSet.has(board[i][column])) {
+                    isValid = false;
+                    return;
+                }
+                columnSet.add(board[i][column]);
+            }
+        }
+    }
+
+    function checkSubBox(boxColumn, boxRow) {
+        var boxSet = new Set();
+        for (let i = boxRow*3; i < boxRow*3 + 3; i++) {
+            for (let j = boxColumn*3; j < boxColumn*3 + 3; j++) {
+                if (isNumber(board[i][j])) {
+                    if (boxSet.has(board[i][j])) {
+                        isValid = false;
+                        return;
+                    }
+                boxSet.add(board[i][j]);
+                }
+            }
+        }
+        //console.log(boxSet)
+    }
+
+    for (let i = 0; i < 9; i++) {
+        checkRow(i);
+        if (!isValid) {
+            return false;
+        }
+
+        checkColumn(i);
+        if (!isValid) {
+            return false;
+        }
+
+    }
+
+
+    for (let i = 0; i < 3; i++) { // i = rows of boxes
+        for (let j = 0; j < 3; j++) { // j = columns of boxes
+            checkSubBox(j, i);
+            if (!isValid) {
+                return false;
+            }
+        }
+    }
+    
+    return true;
+}
