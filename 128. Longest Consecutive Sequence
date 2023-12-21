@@ -1,0 +1,26 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestConsecutive = function(nums) {
+    let set = new Set(nums)
+    let highestCount = 0;
+    let currCount = 1;
+    let j = 0;
+
+    for (value of set) {
+        j = value;
+        if (set.has(j - 1)) {
+            continue;
+        }
+        while (set.has(j + 1)) {
+            j++;
+            currCount++;
+        }
+        if (currCount > highestCount) {
+            highestCount = currCount;
+        }
+        currCount = 1;
+    }
+    return highestCount;
+};
