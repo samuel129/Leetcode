@@ -1,0 +1,22 @@
+var isPalindrome = function(s) {
+    let reverse  = '';
+    let forwards = '';
+    let strRegex = new RegExp(/^[a-z0-9]+$/i);
+
+    for (let i = 0; i < s.length; i++) {
+        if (strRegex.test(s[i])) {
+            forwards += s[i].toLowerCase();
+        }
+    }
+
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (strRegex.test(s[i])) {
+            reverse += s[i].toLowerCase();
+        }
+    }
+    
+    if (reverse === forwards) {
+        return true;
+    }
+    return false;
+};
