@@ -1,0 +1,17 @@
+var maxProfit = function(prices) {
+    let left = 0;
+    let right = 1;
+    let currMax = 0;
+
+    for (let i = 1; i < prices.length; i++) {
+        if ((prices[i] - prices[left]) > currMax) {
+            currMax = (prices[i] - prices[left]);
+        }
+
+        else if (prices[i] < prices[left]) {
+            left = i;
+        }
+    }
+
+    return currMax
+};
