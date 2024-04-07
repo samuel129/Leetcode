@@ -1,0 +1,21 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        openToClose = {'(':')', '{':'}', '[':']'}
+        closeToOpen = {')':'(', '}':'{', ']':'['}
+        stack = ''
+        if len(s) < 2:
+            return False
+
+        for c in s:
+            if c in openToClose:
+                stack += c
+            if c in closeToOpen:
+                if len(stack) == 0:
+                    return False
+                if stack[-1] == closeToOpen[c]:
+                    stack = stack[:len(stack) - 1]
+                else:
+                    return False
+        if len(stack) > 0:
+            return False                    
+        return True
