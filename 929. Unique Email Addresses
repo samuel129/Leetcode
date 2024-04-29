@@ -1,0 +1,22 @@
+class Solution:
+    def numUniqueEmails(self, emails: List[str]) -> int:
+        local = True
+        plus = False
+        emailSet = set()
+        for email in emails:
+            currEmail = ''
+            for char in email:
+                if local and char == '.':
+                    continue
+                elif local and char == '+':
+                    plus = True
+                    continue
+                elif local and char == '@':
+                    local = False
+                    currEmail += '@'
+                elif not plus or not local:
+                    currEmail += char
+            local = True
+            plus = False
+            emailSet.add(currEmail)
+        return len(emailSet)
