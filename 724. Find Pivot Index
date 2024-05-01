@@ -1,0 +1,16 @@
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        pivot = 0
+        leftSum = 0
+        rightSum = 0
+        for num in nums[1:]:
+            rightSum += num
+        
+        for i, num in enumerate(nums):
+            print('left: ', leftSum, ' right: ', rightSum)
+            if rightSum == leftSum:
+                return i
+            elif rightSum != leftSum and (i + 1 < len(nums)):
+                rightSum -= nums[i + 1]
+                leftSum += num
+        return -1
