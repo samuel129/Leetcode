@@ -1,0 +1,14 @@
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        strings = s.split(' ')
+        charToString = {}
+        if len(strings) != len(pattern):
+            return False
+        usedStrings = set()
+        for i, char in enumerate(pattern):
+            if (char in charToString and charToString[char] != strings[i]) or (char not in charToString and strings[i] in usedStrings):
+                return False
+            else:
+                charToString[char] = strings[i]
+                usedStrings.add(strings[i])
+        return True
