@@ -1,0 +1,15 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        lengthOfNumsTwo = len(nums2)
+        numToIndex = {}
+        for i in range(len(nums2)):
+            numToIndex[nums2[i]] = i
+        for ind, num in enumerate(nums1):
+            for i in range(numToIndex[num] + 1, lengthOfNumsTwo + 1):
+                if i == lengthOfNumsTwo:
+                    nums1[ind] = -1
+                    break
+                if nums2[i] > num:
+                    nums1[ind] = nums2[i]
+                    break
+        return nums1
