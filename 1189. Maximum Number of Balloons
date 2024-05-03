@@ -1,0 +1,12 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        map = {'b': 0, 'a': 0, 'l': 0, 'o': 0, 'n': 0}
+        for letter in text:
+            if letter in map:
+                if letter == 'l' or letter == 'o':
+                    map[letter] += 0.5
+                else:
+                    map[letter] += 1
+        map['l'] = math.trunc(map['l'])
+        map['o'] = math.trunc(map['o'])
+        return min(map.values())
