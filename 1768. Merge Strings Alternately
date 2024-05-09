@@ -1,0 +1,9 @@
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        minLength = min(len(word1), len(word2))
+        finalStr = ''
+        for i in range(minLength):
+            finalStr += word1[i] + word2[i]
+        finalStr += word1[minLength:]
+        finalStr += word2[minLength:]
+        return finalStr
