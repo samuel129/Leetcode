@@ -1,0 +1,17 @@
+class Codec:
+    def __init__(self):
+        self.decodeMap = {}
+        self.base = 'https://tinyurl.com/'
+
+    def encode(self, longUrl: str) -> str:
+        self.decodeMap[len(longUrl)] = longUrl
+        return self.base + str(len(longUrl))
+        
+
+    def decode(self, shortUrl: str) -> str:
+        return self.decodeMap[int(shortUrl[20:])]
+        
+
+# Your Codec object will be instantiated and called as such:
+# codec = Codec()
+# codec.decode(codec.encode(url))
