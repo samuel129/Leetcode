@@ -1,0 +1,14 @@
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        seen = set()
+        res = set()
+
+        for i in range(len(s) - 9):
+            dna = s[i:i + 10]
+
+            if dna in seen and dna not in res:
+                res.add(dna)
+            else:
+                seen.add(dna)
+                
+        return list(res)
