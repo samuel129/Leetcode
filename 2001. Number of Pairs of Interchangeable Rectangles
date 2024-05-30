@@ -1,0 +1,14 @@
+class Solution:
+    def interchangeableRectangles(self, rectangles: List[List[int]]) -> int:
+        seen = {}
+        count = 0
+
+        for rect in rectangles:
+            calc = rect[1] / rect[0]
+            if calc in seen:
+                count += seen[calc]
+                seen[calc] += 1
+            else:
+                seen[calc] = 1
+
+        return count
