@@ -1,0 +1,24 @@
+class Solution:
+    def isMonotonic(self, nums: List[int]) -> bool:
+        if len(nums) == 1:
+            return True
+
+        found = False
+        increasing = False
+        prev = nums[0]
+
+        for i in range(1, len(nums)):
+            if not found:
+                if prev > nums[i]:
+                    found = True
+                elif prev < nums[i]:
+                    found = True
+                    increasing = True
+            if found:
+                if increasing and prev > nums[i]:
+                    return False
+                elif not increasing and prev < nums[i]:
+                    return False
+            prev = nums[i]
+            
+        return True
