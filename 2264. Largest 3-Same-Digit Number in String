@@ -1,0 +1,14 @@
+class Solution:
+    def largestGoodInteger(self, num: str) -> str:
+        largest = 0
+        found = False
+
+        for i in range(len(num) - 2):
+            if num[i + 1] == num[i] and num[i + 2] == num[i]:
+                largest = max(int(num[i]), int(largest))
+                found = True
+        
+        if found: 
+            return str(largest) * 3
+        else:
+            return ''
