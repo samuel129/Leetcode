@@ -1,0 +1,24 @@
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        charList = {}
+        charListCopy = {}
+        count = 0
+
+        for char in chars:
+            if char not in charList:
+                charList[char] = 1
+            else:
+                charList[char] += 1
+        
+        for word in words:
+            charListCopy = charList.copy()
+            good = True
+            for char in word:
+                if char not in charListCopy or charListCopy[char] == 0:
+                    good = False
+                    break
+                else:
+                    charListCopy[char] -= 1
+            if good:
+                count += len(word)
+        return count
