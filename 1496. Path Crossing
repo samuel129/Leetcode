@@ -1,0 +1,14 @@
+class Solution:
+    def isPathCrossing(self, path: str) -> bool:
+        spot = [0, 0]
+        seen = set()
+        seen.add((0, 0))
+        legend = {'N': [0, 1], 'E': [1, 0], 'S': [0, -1], 'W': [-1, 0]}
+
+        for char in path:
+            spot[0] += (legend[char])[0]
+            spot[1] += (legend[char])[1]
+            if (spot[0], spot[1]) in seen:
+                return True
+            seen.add((spot[0], spot[1]))
+        return False
