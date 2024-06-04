@@ -1,0 +1,16 @@
+class Solution:
+    def makeEqual(self, words: List[str]) -> bool:
+        count = {}
+
+        for word in words:
+            for char in word:
+                if char not in count:
+                    count[char] = 1
+                else:
+                    count[char] += 1
+        
+        for key in count:
+            if count[key] % len(words) != 0:
+                return False
+        
+        return True
