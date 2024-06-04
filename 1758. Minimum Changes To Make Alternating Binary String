@@ -1,0 +1,21 @@
+class Solution:
+    def minOperations(self, s: str) -> int:
+        count = 0
+        secondCount = 0
+        current = '0'
+        legend = {'1':'0', '0':'1'}
+
+        for num in s:
+            if num != legend[current]:
+                count += 1
+            current = legend[current]
+
+        current = '1'
+
+        for num in s:
+            if num != legend[current]:
+                secondCount += 1
+            current = legend[current]
+
+        return min(count, secondCount)
+                
