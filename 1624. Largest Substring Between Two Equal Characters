@@ -1,0 +1,12 @@
+class Solution:
+    def maxLengthBetweenEqualCharacters(self, s: str) -> int:
+        seen = {}
+        max = -1
+
+        for i, char in enumerate(s):
+            if char not in seen:
+                seen[char] = i
+            if char in seen:
+                if i - seen[char] > max:
+                    max = i - seen[char] - 1
+        return max
