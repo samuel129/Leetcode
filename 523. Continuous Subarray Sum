@@ -1,0 +1,12 @@
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        remainderAndIndex = {0: -1}
+        sum = 0
+
+        for i, num in enumerate(nums):
+            sum += num
+            if sum % k not in remainderAndIndex:
+                remainderAndIndex[sum % k] = i
+            elif i - remainderAndIndex[sum % k] > 1:
+                return True
+        return False
