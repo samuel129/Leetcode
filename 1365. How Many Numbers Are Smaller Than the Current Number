@@ -1,0 +1,15 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        hashMap = {}
+
+        sortedNums = sorted(list(nums))
+
+        for i, num in enumerate(sortedNums):
+            if num in hashMap:
+                continue
+            hashMap[num] = i
+
+        for i in range(len(nums)):
+            nums[i] = hashMap[nums[i]]
+
+        return nums
