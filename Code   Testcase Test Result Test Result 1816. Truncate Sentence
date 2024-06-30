@@ -1,0 +1,12 @@
+class Solution:
+    def truncateSentence(self, s: str, k: int) -> str:
+        counter = 0
+
+        for i in range(len(s)):
+            if s[i] == ' ':
+                counter += 1
+                if counter == k:
+                    s = s[0:i]
+                    return s
+        
+        return s
