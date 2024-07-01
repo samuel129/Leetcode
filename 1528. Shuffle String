@@ -1,0 +1,9 @@
+class Solution:
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        indexToChar = zip(indices, s)
+        res = ['0'] * len(s)
+        
+        for i, char in indexToChar:
+            res[i] = char
+
+        return ''.join(res)
