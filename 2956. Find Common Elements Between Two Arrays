@@ -1,0 +1,16 @@
+class Solution:
+    def findIntersectionValues(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1check = set(nums1)
+        nums2check = set(nums2)
+
+        ans = [0, 0]
+
+        for num in nums1:
+            if num in nums2check:
+                ans[0] += 1
+
+        for num in nums2:
+            if num in nums1check:
+                ans[1] += 1
+        
+        return ans
