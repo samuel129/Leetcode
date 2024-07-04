@@ -1,0 +1,17 @@
+class Solution:
+    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        alpha = [char for char in 'abcdefghijklmnopqrstuvwxyz']
+        res = set()
+        key = {}
+        for i, char in enumerate(alpha):
+            key[char] = morse[i]
+
+        for word in words:
+            currStr = ''
+            for char in word:
+                currStr += key[char]
+            if currStr not in res:
+                res.add(currStr)
+        
+        return len(res)
