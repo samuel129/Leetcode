@@ -1,0 +1,14 @@
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        r = word.find(ch)
+        l = 0
+        word = [char for char in word]
+
+        while r > l:
+            temp = word[l]
+            word[l] = word[r]
+            word[r] = temp
+            r -= 1
+            l += 1
+
+        return ''.join(word)
