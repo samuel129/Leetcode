@@ -1,0 +1,19 @@
+class Solution:
+    def diStringMatch(self, s: str) -> List[int]:
+        res = []
+        currSmall, currLarge = 0, len(s)
+
+        for i in range(len(s)):
+            if s[i] == 'I':
+                res.append(currSmall)
+                currSmall += 1
+            else:
+                res.append(currLarge)
+                currLarge -= 1
+
+        if s[len(s) - 1] == 'I':
+            res.append(currSmall)
+        else:
+            res.append(currLarge)
+
+        return res
