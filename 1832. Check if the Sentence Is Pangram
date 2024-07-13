@@ -1,0 +1,6 @@
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        alpha = set([char for char in 'abcdefghijklmnopqrstuvwxyz'])
+
+        if set(sentence) == alpha:
+            return True
