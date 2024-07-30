@@ -1,0 +1,20 @@
+class Solution:
+    def countPoints(self, rings: str) -> int:
+        rodToColor = {}
+        counter = 0
+
+        for i in range(0, len(rings), 2):
+            color = rings[i]
+            ringIndex = rings[i + 1]
+            
+            if ringIndex not in rodToColor:
+                rodToColor[ringIndex] = set(['R', 'G', 'B'])
+            
+            if color in rodToColor[ringIndex]:
+                rodToColor[ringIndex].remove(color)
+            
+        for key in rodToColor:
+            if len(rodToColor[key]) == 0:
+                counter += 1
+
+        return counter
