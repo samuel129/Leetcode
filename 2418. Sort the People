@@ -1,0 +1,5 @@
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        heights = sorted(zip(heights, names), reverse=True)
+
+        return [h[1] for h in heights]
