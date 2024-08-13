@@ -1,0 +1,10 @@
+class Solution:
+    def sumCounts(self, nums: List[int]) -> int:
+        totalSum = 0
+        size = 1
+
+        for i in range(len(nums)):
+            for j in range(i, len(nums) + 1):
+                totalSum += len(set(nums[i:j])) ** 2
+        
+        return totalSum
